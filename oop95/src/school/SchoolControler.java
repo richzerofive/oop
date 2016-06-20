@@ -14,11 +14,10 @@ import javax.swing.JOptionPane;
 */
 public class SchoolControler {
 	public static void main(String[] args) {
-		
-		Student student = null;
+		StudentService service =new StudentServiceImpl();
 		
 		while (true) {
-			switch (JOptionPane.showInputDialog("1. 등록 2. 조회 0. 종료")){
+			switch (JOptionPane.showInputDialog("1. 등록 2. 보기 3. 수정 4.삭제 0.종료")){
 				
 			case "1":
 				int yes=JOptionPane.showConfirmDialog(null, "등록?");
@@ -27,14 +26,20 @@ public class SchoolControler {
 				String pw = JOptionPane.showInputDialog("비밀번호");
 				String name = JOptionPane.showInputDialog("이름");
 				String ssn = JOptionPane.showInputDialog("주민번호 7자리");
-				student= new Student(id,pw,name,ssn);	
+				service.registStudent(id, pw, name, ssn);
 				}
 				break;
 				
 			case "2":
-				JOptionPane.showMessageDialog(null, "이름 :"+student.toString());
+				JOptionPane.showMessageDialog(null,service.showStudent());
 				break;
-			
+			case "3":
+				String rpw=JOptionPane.showInputDialog("변경할 비밀번호");
+				service.updateStudent(rpw);
+				break;
+			case "4":
+				service.deleteStudent();
+				break;
 			case "0" :
 				yes =JOptionPane.showConfirmDialog(null, "종료?");
 				if (yes==0) {
