@@ -1,8 +1,8 @@
-package simpleRPS4;
+package simpleRPS5;
 
 import java.util.Random;
 
-public class SimpleRPSServiceImpl implements SimpleRPSService{
+public class SimpleRPSServiceImpl2 implements SimpleRPSService{
 	SimpleRPSBean rps = new SimpleRPSBean();
 	@Override
 	public String playGame(int player) {
@@ -13,9 +13,9 @@ public class SimpleRPSServiceImpl implements SimpleRPSService{
 		int ply = rps.getPlay();
 		int win = 0;
 		if (com==ply) {
-			result = "TIE";
-			return "TIE";
-		}
+			result = "WIN";
+			
+		}else{
 		switch (Math.abs(ply-com)) {
 		case 1:
 			win = (ply>com)? ply : com;
@@ -28,7 +28,8 @@ public class SimpleRPSServiceImpl implements SimpleRPSService{
 		}
 		winner = (win == ply)?"플레이어":"컴퓨터";
 		result = winner+"승리";
-		return result;
+		}
+		return winner;
 	}
 
 	@Override
