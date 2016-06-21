@@ -27,11 +27,10 @@ public class GradeController {
 		// ===============연산부 (알고리즘)---------------------------
 		input = JOptionPane.showInputDialog("이름,국어,영어,수학?");
 		String[] inputArr =input.split(",");
-		service.name(inputArr[0]);
+		name =inputArr[0];
 		kor = Integer.parseInt(inputArr[1]);
 		eng = Integer.parseInt(inputArr[2]);
 		math = Integer.parseInt(inputArr[3]);
-		service.total(kor,eng,math);
-		JOptionPane.showMessageDialog(null, service.total(kor, eng, math));
+		JOptionPane.showMessageDialog(null, service.total(name,kor, eng, math));
 	}
 }
