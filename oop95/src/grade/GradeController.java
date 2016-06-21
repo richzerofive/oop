@@ -32,6 +32,6 @@ public class GradeController {
 		eng = Integer.parseInt(inputArr[2]);
 		math = Integer.parseInt(inputArr[3]);
 		service.total(kor,eng,math);
-		JOptionPane.showMessageDialog(null, service.total(kor+eng+math));
+		JOptionPane.showMessageDialog(null, service.total(kor, eng, math));
 	}
 }

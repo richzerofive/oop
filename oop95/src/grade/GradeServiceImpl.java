@@ -4,8 +4,10 @@ public class GradeServiceImpl implements GradeService {
 	GradeBean bean = new GradeBean();
 
 	@Override
-	public int total(int kor,int eng, int math) {
+	public String total(int kor,int eng, int math) {
 		int avg = (kor+eng+math) / 3 / 10;
+		int avg2 = (kor+eng+math) / 3;
+		int total = kor+eng+math;
 		String grade = "";
 		switch (avg) {
 		case 9:
@@ -31,11 +33,11 @@ public class GradeServiceImpl implements GradeService {
 			grade = "F";
 			break;
 		}
-		return  ":총점 " + total + ", 평균 " + avg + ",학점" + grade;
+		return  ":총점 " + total + ", 평균 " + avg2 + ",학점" + grade;
 		
 	}
 	@Override
-	public String name(String name) {
+	public  String name(String name) {
 		return name;
 	}
 
