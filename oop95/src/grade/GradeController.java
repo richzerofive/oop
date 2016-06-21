@@ -22,7 +22,7 @@ public class GradeController {
 	public static void main(String[] args) {
 		// ---------------변수 선언부,준비,초기화(init)--------------
 		String name = "", input=""; 
-		int kor=0,eng=0,math=0,total=0;
+		int kor=0,eng=0,math=0;
 		GradeService service = new GradeServiceImpl();
 		// ===============연산부 (알고리즘)---------------------------
 		input = JOptionPane.showInputDialog("이름,국어,영어,수학?");
@@ -31,6 +31,10 @@ public class GradeController {
 		kor = Integer.parseInt(inputArr[1]);
 		eng = Integer.parseInt(inputArr[2]);
 		math = Integer.parseInt(inputArr[3]);
-		JOptionPane.showMessageDialog(null, service.total(name,kor, eng, math));
+		service.total(kor, eng, math);
+		service.avg(service.total(kor, eng, math)/3);
+		service.grade(service.avg(service.total(kor, eng, math)/3));
+		JOptionPane.showMessageDialog(null, "이름:"+name+"등급"+service.showResult(service.grade(service.avg(service.total(kor, eng, math)))));
+		
 	}
 }

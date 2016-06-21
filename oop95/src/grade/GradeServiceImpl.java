@@ -1,16 +1,27 @@
 package grade;
 
 public class GradeServiceImpl implements GradeService {
-	GradeBean bean = new GradeBean();
+	GradeBean bean;
 
 	@Override
-	public String total(String name,int kor,int eng, int math) {
-		bean.setName(name);
-		int avg = (kor+eng+math) / 3 / 10;
-		int avg2 = (kor+eng+math) / 3;
+	public int total(int kor,int eng, int math) {
 		int total = kor+eng+math;
+	
+		
+		return  total;
+		
+	}
+
+	@Override
+	public int avg(int total) {
+		int avg = total/3;
+		return avg; 
+	}
+
+	@Override
+	public String grade(int avg) {
 		String grade = "";
-		switch (avg) {
+		switch (avg/10) {
 		case 9:
 			grade = "A";
 			break;
@@ -34,8 +45,12 @@ public class GradeServiceImpl implements GradeService {
 			grade = "F";
 			break;
 		}
-		return  bean.getName()+":총점 " + total + ", 평균 " + avg2 + ",학점" + grade;
-		
+		return grade;
+	}
+
+	@Override
+	public String showResult(String grade) {
+		return grade;
 	}
 	}
 
