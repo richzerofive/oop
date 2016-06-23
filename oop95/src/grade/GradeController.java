@@ -32,8 +32,8 @@ public class GradeController {
 		eng = Integer.parseInt(inputArr[2]);
 		math = Integer.parseInt(inputArr[3]);
 		service.total(kor, eng, math);
-		service.avg(service.total(kor, eng, math)/3);
-		service.grade(service.avg(service.total(kor, eng, math)/3));
+		service.avg(service.total(kor, eng, math));
+		service.grade(service.avg(service.total(kor, eng, math)));
 		JOptionPane.showMessageDialog(null, "이름:"+name+"등급"+service.showResult(service.grade(service.avg(service.total(kor, eng, math)))));
 		
 	}
