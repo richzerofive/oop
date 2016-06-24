@@ -1,4 +1,4 @@
-package LottoEx;
+package lottoEx;
 
 /**
  * @date : 2016. 6. 24.

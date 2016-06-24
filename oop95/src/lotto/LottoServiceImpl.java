@@ -37,6 +37,7 @@ public class LottoServiceImpl implements LottoService{
 							break;
 						}
 				  }
+				
 		}
 			}}
 
