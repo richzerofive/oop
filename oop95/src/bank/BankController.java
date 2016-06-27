@@ -5,10 +5,6 @@ package bank;
 
 import javax.swing.JOptionPane;
 
-import com.sun.org.apache.xml.internal.security.utils.Constants;
-
-import global.MyConstants;
-
 /**
  *@date   : 2016. 6. 15.
  *@author : 박승주
@@ -18,11 +14,16 @@ import global.MyConstants;
 public class BankController {
 	public static void main(String[] args) {
 		AccountService service = new AccountServiceImpl();
+		BankService service2 = new BankServiceImpl();
+		AccountBean bean = new AccountBean();
+		String spec = "";
+		String[] specArr = new String[3];
 		while (true) {
-			switch (JOptionPane.showInputDialog("1.개설 2.입금 3.조회 4.출금 5.통장내역 0.종료")) {
+			switch (JOptionPane.showInputDialog("=======개인인터넷뱅킹=======\n"+"1.개설 2.입금 3.조회 4.출금 5.통장내역\n"+"=========은행창구=========\n "+"11.개설 12.조회(전체) 13.개좌번호조회 14.이름조회 15.개좌수 0.종료")) {
+					
 			case "1":
-				String spec= JOptionPane.showInputDialog("이름,id,pw");
-				String[] specArr=spec.split(",");
+				spec= JOptionPane.showInputDialog("이름,id,pw");
+				specArr=spec.split(",");
 				service.openAccount(specArr[0], specArr[1], specArr[2]);
 				break;
 			case "2":
@@ -31,7 +32,6 @@ public class BankController {
 				service.deposit(Integer.parseInt(inputMoney));
 				break;
 			case "3":
-				//JOptionPane.showMessageDialog(null, service.findAccount());
 				break;
 			case "4":
 				String outputMoney=JOptionPane.showInputDialog("출금액?");
@@ -39,6 +39,31 @@ public class BankController {
 				break;
 			case "5":
 				JOptionPane.showMessageDialog(null, service.showAccount());
+				break;
+			case "11":
+				spec= JOptionPane.showInputDialog("이름,id,pw");
+				specArr=spec.split(",");
+				bean.setAccountNo();
+				bean.setName(specArr[0]);
+				bean.setId(specArr[1]);
+				bean.setPw(specArr[2]);
+				service2.openAccount(bean);
+				break;
+			case "12":
+				JOptionPane.showMessageDialog(null, service2.findAccount());
+				break;
+			case "13":
+				bean = service2.findByAccountNo(JOptionPane.showInputDialog("계좌번호입력"));
+				if (!bean.equals(bean.getAccountNo())) {
+					JOptionPane.showMessageDialog(null, bean+"은 확인이 안됩니다");
+				}else{
+					JOptionPane.showMessageDialog(null,	bean.toString());
+				}
+				break;
+			case "14":
+				service2.findByName(JOptionPane.showInputDialog("이름"));
+			case "15":
+				JOptionPane.showMessageDialog(null, service2.count());
 				break;
 			case "0":
 				int ok =JOptionPane.showConfirmDialog(null, "종료?");

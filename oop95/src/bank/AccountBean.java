@@ -16,12 +16,13 @@ import global.MyConstants;
  * @story :
  */
 public class AccountBean {
-	private int accountNo; // 인스턴스 변수는 초기화를 하지 않는다
+	private String accountNo; // 인스턴스 변수는 초기화를 하지 않는다
 	private String name;
 	private int money;
 	private String pw;
 	private String id;
-
+	
+	
 	public AccountBean() {
 	}
 	
@@ -29,12 +30,15 @@ public class AccountBean {
 	
 	
 	public AccountBean(String name,String id,String pw) {
-		this.accountNo = (int) (Math.random() * 999999) + 100000;
+		this.accountNo = String.valueOf((int) (Math.random() * 999999) + 100000);
 		this.name = name;
 		this.id = id;
 		this.pw = pw;
 	}
 
+	public void setAccountNo() {
+		this.accountNo = String.valueOf((int) (Math.random() * 999999) + 100000);
+}
 	public void setMoney(int money) {
 		this.money = money;
 	}
@@ -42,8 +46,13 @@ public class AccountBean {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-
-	public int getAccountNo() {
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
+	public String getAccountNo() {
 		return this.accountNo;
 	}
 
