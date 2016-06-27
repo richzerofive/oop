@@ -19,7 +19,7 @@ public class BankController {
 		String spec = "";
 		String[] specArr = new String[3];
 		while (true) {
-			switch (JOptionPane.showInputDialog("=======개인인터넷뱅킹=======\n"+"1.개설 2.입금 3.조회 4.출금 5.통장내역\n"+"=========은행창구=========\n "+"11.개설 12.조회(전체) 13.개좌번호조회 14.이름조회 15.개좌수 0.종료")) {
+			switch (JOptionPane.showInputDialog("=======개인인터넷뱅킹=======\n"+"1.개설 2.입금 3.조회 4.출금 5.통장내역\n"+"=========은행창구=========\n "+"11.개설 12.조회(전체) 13.개좌번호조회 14.이름조회 15.개좌수 17.해지 0.종료")) {
 					
 			case "1":
 				spec= JOptionPane.showInputDialog("이름,id,pw");
@@ -53,18 +53,20 @@ public class BankController {
 				JOptionPane.showMessageDialog(null, service2.findAccount());
 				break;
 			case "13":
-				bean = service2.findByAccountNo(JOptionPane.showInputDialog("계좌번호입력"));
-				if (!bean.equals(bean.getAccountNo())) {
-					JOptionPane.showMessageDialog(null, bean+"은 확인이 안됩니다");
-				}else{
-					JOptionPane.showMessageDialog(null,	bean.toString());
-				}
+				bean = service2.findByAccountNo(JOptionPane.showInputDialog("검색하려는 계좌번호"));
+				JOptionPane.showMessageDialog(null,(bean.getAccountNo() != null) ?bean.getAccountNo()+"조회 계좌번호 없음":bean.toString());
 				break;
 			case "14":
 				service2.findByName(JOptionPane.showInputDialog("이름"));
 			case "15":
 				JOptionPane.showMessageDialog(null, service2.count());
 				break;
+			case "17":
+				String accNo="";
+				service2.deleteAccount(JOptionPane.showInputDialog("계좌번호"));
+				JOptionPane.showMessageDialog(null, service2.deleteAccount(accNo));
+				break;
+				
 			case "0":
 				int ok =JOptionPane.showConfirmDialog(null, "종료?");
 				if (ok==0) {

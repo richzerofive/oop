@@ -9,6 +9,7 @@ public class BankServiceImpl implements BankService{
 
 	List<AccountBean> list;
 	AccountBean searchMan = new AccountBean();
+	String result = "";
 	
 	public BankServiceImpl() {
 		list = new ArrayList<AccountBean>();
@@ -21,21 +22,21 @@ public class BankServiceImpl implements BankService{
 
 	@Override
 	public List<AccountBean> findAccount() {
-		return null;
+		return list;
 	}
 
 	@Override
-	public AccountBean findByAccountNo(String bean) {
+	public AccountBean findByAccountNo(String accNo) {
+		AccountBean acc = new AccountBean();
 		int i = 0;
-		for (i = 0; i < list.size(); i++) {
-			if (list.get(i).getAccountNo().equals(bean)) {
-				searchMan = list.get(i);
+		for (; i < list.size(); i++) {
+			if (String.valueOf(list.get(i).getAccountNo()).equals(accNo)) {
+				acc = list.get(i);
 				break;
 			}
 		}
-		return null;
-	}
-
+			return acc;
+			}
 	@Override
 	public List<AccountBean>  findByName(String name) {
 		return null;
@@ -46,11 +47,6 @@ public class BankServiceImpl implements BankService{
 		return list.size();
 	}
 
-	@Override
-	public void showAccount() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void updateAccount() {
@@ -59,10 +55,15 @@ public class BankServiceImpl implements BankService{
 	}
 
 	@Override
-	public void deleteAccount() {
-		// TODO Auto-generated method stub
-		
+	public String deleteAccount(String accNo) {
+		AccountBean a = this.findByAccountNo(accNo);
+		if (!a.equals(a.getAccountNo())) {
+			result = accNo + "는 없는 계좌입니다";
+			
+		} else {
+			a=null;
+			result = "해지가 완료되었습니다";
 	}
-
-
+		return result;
+		}
 }
