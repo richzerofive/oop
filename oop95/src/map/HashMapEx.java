@@ -1,13 +1,15 @@
 package map;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class HashMapEx {
 	public static void main(String[] args) {
 		String[] msg = {"Berlin","Dortmund","Frankfurt","Gelsenkirchen","hamburg"};
+			
 		
-			HashMap<Integer, String> map = new HashMap<Integer,String>();
+			Map<Integer, String> map = new HashMap<Integer,String>();
 			
 			for (int i = 0; i < msg.length; i++) {
 				map.put(i, msg[i]);
