@@ -39,6 +39,9 @@ public class AccountBean {
 	public void setAccountNo() {
 		this.accountNo = String.valueOf((int) (Math.random() * 999999) + 100000);
 }
+	public void setAccountNo(String accountNo){
+		this.accountNo = accountNo;
+	}
 	public void setMoney(int money) {
 		this.money = money;
 	}
